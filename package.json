@@ -30,6 +30,6 @@
     "vite": "^2.7.13"
   },
   "dependencies": {
-    "typesafe-i18n": "^2.60.1"
+    "typesafe-i18n": "^3.0.0"
   }
 }

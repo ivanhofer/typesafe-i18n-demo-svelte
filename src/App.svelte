@@ -3,20 +3,26 @@
 	import { localStorageDetector } from 'typesafe-i18n/detectors'
 
 	import logo from './assets/svelte.png'
-	import LL, { initI18n, locale, setLocale } from './i18n/i18n-svelte'
+	import LL, { locale, setLocale } from './i18n/i18n-svelte'
 	import type { Locales } from './i18n/i18n-types'
 	import { detectLocale, locales } from './i18n/i18n-util'
+	import { loadLocaleAsync } from './i18n/i18n-util.async'
 	import Counter from './lib/Counter.svelte'
 
 	onMount(async () => {
 		const detectedLocale = detectLocale(localStorageDetector)
-		await initI18n(detectedLocale)
-		console.log(LL.startup())
+		await chooseLocale(detectedLocale)
+		console.log($LL.startup())
 		localeToSelect = $locale
 	})
 
+	const chooseLocale = async(locale: Locales) => {
+		await loadLocaleAsync(locale)
+		setLocale(locale)
+	}
+
 	let localeToSelect: Locales
-	$: localeToSelect && setLocale(localeToSelect)
+	$: localeToSelect && chooseLocale(localeToSelect)
 
 	$: $locale && localStorage.setItem('lang', $locale)
 
@@ -56,7 +62,13 @@
 		line-height: 1.35;
 	}
 
-  hr { margin: 2rem 0}
+	select {
+		width: 50px;
+	}
+
+	hr {
+		margin: 2rem 0;
+	}
 
 	@media (min-width: 480px) {
 		h1 {
@@ -70,7 +82,7 @@
 </style>
 
 <main>
-  <label>
+	<label>
 		{$LL.locale.selectedLocale()}
 		<select bind:value={localeToSelect}>
 			<option value="" selected disabled>{$LL.locale.choose()}</option>
