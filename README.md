@@ -51,13 +51,15 @@ You could configure your development script to run the generator in parallel to 
 
 The generator will create some custom Svelte stores inside `i18n-svelte.ts` that you can use inside your components.
 
-Then inside your root-component, you need to call `initI18n` in order to setup all stores.
+Then inside your root-component, you need to load your locales and call `setLocale` in order to setup all stores.
 
 ```html
 <script lang="ts">
-   import { initI18n } from './i18n/i18n-svelte'
+   import { setLocale } from './i18n/i18n-svelte'
 
-   initI18n()
+   // TODO: load locales (https://github.com/ivanhofer/typesafe-i18n#loading-locales)
+
+   setLocale()
 </script>
 
 <!-- HTML markup -->
