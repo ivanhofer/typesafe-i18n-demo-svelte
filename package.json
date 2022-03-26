@@ -19,17 +19,17 @@
     "typesafe-i18n": "typesafe-i18n"
   },
   "devDependencies": {
-    "@sveltejs/vite-plugin-svelte": "1.0.0-next.35",
+    "@sveltejs/vite-plugin-svelte": "1.0.0-next.40",
     "@tsconfig/svelte": "^3.0.0",
     "npm-run-all": "^4.1.5",
-    "svelte": "^3.46.2",
-    "svelte-check": "^2.3.0",
-    "svelte-preprocess": "^4.10.2",
+    "svelte": "^3.46.4",
+    "svelte-check": "^2.4.6",
+    "svelte-preprocess": "^4.10.4",
     "tslib": "^2.3.1",
-    "typescript": "^4.5.5",
-    "vite": "^2.7.13"
+    "typescript": "^4.6.3",
+    "vite": "^2.8.6"
   },
   "dependencies": {
-    "typesafe-i18n": "^3.0.0"
+    "typesafe-i18n": "^5.1.0"
   }
 }
